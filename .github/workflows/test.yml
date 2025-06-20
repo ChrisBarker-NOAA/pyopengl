@@ -34,7 +34,7 @@ jobs:
 
     - name: Test pyopengl
       run: |
-        pytest test
+        pytest tests
 
     # - name: Test with tox
     #   run: |
