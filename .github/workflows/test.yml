@@ -3,21 +3,24 @@
 
 name: test
 
-on: [push, pull_request]
-# on:
-  # push:
-  #   branches: [ "master" ]
-  # pull_request:
-  #   branches: [ "master" ]
+on:
+  - push
+  - pull_request
 
 jobs:
   build:
     strategy:
       fail-fast: false
       matrix:
-# tox could handle the python matrix -- but this way we get better reporting from gitHub actions
+# tox could handle the python matrix -- but this way we get better
+#   separation and reporting from gitHub actions
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os:
+# Ubuntu test runners don't have OpenGL
+#   I *think* Mesa could be installed, but haven't figured that out yet.
+#           - ubuntu-latest
+          - windows-latest
+          - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
@@ -40,7 +43,4 @@ jobs:
       run: |
         pytest tests
 
-    # - name: Test with tox
-    #   run: |
-    #     tox
 
