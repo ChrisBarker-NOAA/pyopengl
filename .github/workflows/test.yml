@@ -69,7 +69,6 @@ jobs:
     - name: Install Accelerate
       run: |
         python -m pip install --upgrade pip
-        python -m pip install .  # also need PyOpenGL
         python -m pip install accelerate/
 
     - name: Install test dependencies
