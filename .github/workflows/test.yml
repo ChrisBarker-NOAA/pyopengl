@@ -33,7 +33,7 @@ jobs:
         python -m pip install numpy psutil pygame pytest
 
     - name: Test pyopengl
-      run:|
+      run: |
         pytest test
 
     # - name: Test with tox
